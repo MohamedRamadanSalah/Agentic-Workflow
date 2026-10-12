@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "paths": {
+    "application": ["examples/fixture-app/src/**"],
+    "tests": ["tests/**", "examples/fixture-app/tests/**"],
+    "unrestricted": [
+      "docs/**",
+      "examples/fixture-app/docs/**",
+      "examples/fixture-app/tickets/**",
+      "README.md"
+    ]
+  },
+  "checks": [
+    {
+      "id": "system-tests",
+      "description": "Bug-assurance controller unit + acceptance tests (A-R)",
+      "kind": "test",
+      "required": true,
+      "timeout_s": 900,
+      "argv": ["{python}", "-m", "pytest", "tests", "-q", "-p", "no:cacheprovider"]
+    },
+    {
+      "id": "fixture-tests",
+      "description": "Fixture application test suite",
+      "kind": "test",
+      "required": true,
+      "timeout_s": 300,
+      "argv": ["{python}", "-m", "pytest", "examples/fixture-app/tests", "-q", "-p", "no:cacheprovider"]
+    },
+    {
+      "id": "compile",
+      "description": "Byte-compile controller scripts and fixture sources",
+      "kind": "build",
+      "required": true,
+      "timeout_s": 120,
+      "argv": ["{python}", "-m", "compileall", "-q", ".claude/skills/bug-assurance/scripts", "examples/fixture-app/src"]
+    },
+    {
+      "id": "validate-workflows",
+      "description": "GitHub Actions syntax and safety validation",
+      "kind": "static",
+      "required": true,
+      "timeout_s": 120,
+      "argv": ["{python}", ".claude/skills/bug-assurance/scripts/ba.py", "validate-workflows"]
+    }
+  ],
+  "required_reviewers": ["business-logic", "regression", "test-quality"],
+  "conditional_reviewers": ["security"],
+  "optional_reviewers": ["architecture", "coderabbit"],
+  "repair": {"max_cycles": 3, "hard_limit": 10},
+  "guard": {"enabled": true, "ask_on_git_publish": true, "stop_check": true, "capture_prompts": true}
+}

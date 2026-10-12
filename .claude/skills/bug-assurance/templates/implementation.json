@@ -1,0 +1,9 @@
+{
+  "_help": "Implementation summary (ba-implementer). files_changed must list every file the diff audit sees changed since the run baseline (including regression tests). acknowledged_issues lets you justify a diff-audit BLOCKING/WARNING issue: {code, path, justification}; SECRET issues can never be acknowledged. Acknowledged issues are reported as documented risks.",
+  "summary": "",
+  "files_changed": [],
+  "decisions": [],
+  "limitations": [],
+  "remaining_uncertainty": "",
+  "acknowledged_issues": []
+}

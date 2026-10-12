@@ -1,0 +1,15 @@
+{
+  "_help": "Clarification Completeness Gate assessment. status: VERIFIED|AUTHORIZED_DECISION|SUPPORTED_INFERENCE|UNRESOLVED|NOT_APPLICABLE_WITH_JUSTIFICATION. Non-N/A statuses need refs (resolved Q- ids, existing C- ids). AUTHORIZED_DECISION must cite a question resolved by AUTHORIZED_DECISION. root_cause=VERIFIED requires understanding.root_cause.status=CONFIRMED. SUPPORTED_INFERENCE on expected_behavior/business_rules/acceptance_criteria is refused at high/critical risk.",
+  "dimensions": {
+    "expected_behavior": {"status": "", "refs": [], "justification": ""},
+    "actual_behavior": {"status": "", "refs": [], "justification": ""},
+    "business_rules": {"status": "", "refs": [], "justification": ""},
+    "preconditions_and_states": {"status": "", "refs": [], "justification": ""},
+    "ambiguities": {"status": "", "refs": [], "justification": ""},
+    "root_cause": {"status": "", "refs": [], "justification": ""},
+    "acceptance_criteria": {"status": "", "refs": [], "justification": ""},
+    "negative_and_boundary_scenarios": {"status": "", "refs": [], "justification": ""},
+    "regression_risks": {"status": "", "refs": [], "justification": ""},
+    "verification_strategy": {"status": "", "refs": [], "justification": ""}
+  }
+}

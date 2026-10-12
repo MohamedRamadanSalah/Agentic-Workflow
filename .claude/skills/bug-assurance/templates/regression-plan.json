@@ -1,0 +1,17 @@
+{
+  "_help": "Regression tests are run by `ba.py regression-run` against the ORIGINAL code and must fail (exit code in expected_failure_exit_codes, default [1] = pytest test failure). argv is a list (no shell); '{python}' expands to the current interpreter. id must match [a-z0-9][a-z0-9._-]*. After the fix the same tests run as required checks 'regression:<id>' and must pass. If an automated failing-before-fix test is impractical set feasible=false and give infeasible_reason and alternative_strategy (>= 30 chars each); tests are then ignored.",
+  "feasible": true,
+  "tests": [
+    {
+      "id": "",
+      "description": "",
+      "argv": [],
+      "cwd": ".",
+      "timeout_s": 600,
+      "acceptance_criteria": [],
+      "expected_failure_exit_codes": [1]
+    }
+  ],
+  "infeasible_reason": "",
+  "alternative_strategy": ""
+}

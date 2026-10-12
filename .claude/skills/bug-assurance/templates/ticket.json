@@ -1,0 +1,17 @@
+{
+  "_help": "INTAKE artifact. Use 'UNKNOWN' for unknown expected/actual behavior and list it in missing_information. risk_level: low|medium|high|critical. source.kind: text|file|github_issue|url|jira; accessed=true only if fetching the source actually succeeded.",
+  "title": "",
+  "source": {"kind": "", "ref": "", "accessed": false},
+  "symptom": "",
+  "expected_behavior": "",
+  "actual_behavior": "",
+  "reproduction_steps": [],
+  "affected_components": [],
+  "preconditions": [],
+  "evidence": [],
+  "acceptance_criteria": [],
+  "missing_information": [],
+  "potential_side_effects": [],
+  "risk_level": "",
+  "risk_rationale": ""
+}

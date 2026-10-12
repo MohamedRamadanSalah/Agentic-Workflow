@@ -1,0 +1,71 @@
+name: bug-assurance
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bug-assurance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  self-test:
+    name: self-test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: python -m pip install --disable-pip-version-check pytest==9.0.2 pyyaml==6.0.3
+      - name: Run controller unit and acceptance tests
+        run: python -m pytest tests -q -p no:cacheprovider
+
+  assurance-checks:
+    name: assurance-checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install check dependencies
+        run: python -m pip install --disable-pip-version-check pytest==9.0.2 pyyaml==6.0.3
+      - name: Run configured repository checks (.bug-assurance/config.json)
+        # system-tests is skipped here: the self-test job already runs that suite.
+        run: python .claude/skills/bug-assurance/scripts/ba.py verify --standalone --only fixture-tests,compile,validate-workflows --out ba-verify.json
+      - name: Upload verification results
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ba-verify
+          path: ba-verify.json
+          if-no-files-found: warn
+          retention-days: 14
+
+  workflow-lint:
+    name: workflow-lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: python -m pip install --disable-pip-version-check pyyaml==6.0.3
+      - name: Validate workflow syntax and safety
+        run: python .claude/skills/bug-assurance/scripts/ba.py validate-workflows

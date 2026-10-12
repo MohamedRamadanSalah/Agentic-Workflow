@@ -1,0 +1,27 @@
+{
+  "_help": "Behavioral contract. requirements[].id R-n; scenarios[].id AC-n with kind positive|negative|boundary and given/when/then; every requirement needs >= 1 AC, every AC >= 1 requirement. verification: {test} or {impractical_reason}. At least one negative/boundary scenario or no_negative_scenarios_justification. required_checks must be check ids from .bug-assurance/config.json. open_conflicts must be empty. All AC ids referenced by resolved decisions and counterexamples must exist here.",
+  "requirements": [
+    {
+      "id": "R-1",
+      "rule": "",
+      "source": "",
+      "authority": "",
+      "preconditions": [],
+      "expected_behavior": "",
+      "negative_scenarios": [],
+      "acceptance_criteria": [],
+      "decision_refs": [],
+      "verification": {"test": "", "impractical_reason": ""}
+    }
+  ],
+  "scenarios": [
+    {"id": "AC-1", "kind": "", "given": "", "when": "", "then": "", "requirement_ids": []}
+  ],
+  "accepted_assumptions": [],
+  "excluded_behavior": [],
+  "invariants": [],
+  "regression_risks": [],
+  "required_checks": [],
+  "open_conflicts": [],
+  "no_negative_scenarios_justification": ""
+}

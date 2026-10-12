@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# CodeRabbit is a supplementary PR review layer. It does NOT replace the bug-assurance
+# clarification gate, the mandatory reviewers, regression tests, or deterministic verification.
+# Activation requires installing the CodeRabbit GitHub App on the repository (see docs/CODERABBIT.md).
+language: en-US
+reviews:
+  profile: assertive
+  request_changes_workflow: true
+  high_level_summary: true
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+  path_filters:
+    - "!.bug-assurance/runs/**"
+    - "!**/__pycache__/**"
+  path_instructions:
+    - path: "examples/fixture-app/src/**"
+      instructions: >-
+        Review business logic against the approved policy in
+        examples/fixture-app/docs/cancellation-policy.md. Check authorization (who may act on whose
+        order), state transitions across the status flow, boundary statuses (the exact status at
+        which behavior changes), and unknown-status handling. Flag any behavior that existing tests
+        accept but the policy contradicts.
+    - path: "tests/**"
+      instructions: >-
+        For every test, ask whether it would still pass if the original bug remained. Flag tests
+        that mirror the implementation instead of the requirement, assertions weakened or removed,
+        missing negative/boundary cases, and shared state that hides failures.
+    - path: "examples/fixture-app/tests/**"
+      instructions: >-
+        Same as tests/**: verify assertions encode the approved policy, not the old behavior.
+    - path: ".claude/skills/**"
+      instructions: >-
+        This is the bug-assurance gate controller. Treat any change that weakens a gate, lets a
+        missing or skipped check count as passing, removes evidence/provenance checks, allows
+        findings to be deleted, raises repair limits without authorization, or broadens what the
+        hooks allow as a blocking issue. Gate failures must stay explicit and fail closed.
+    - path: ".github/workflows/**"
+      instructions: >-
+        Enforce least-privilege permissions, actions pinned to full commit SHAs, no secrets exposed
+        to pull-request code, and no untrusted event text interpolated into shell commands.

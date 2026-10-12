@@ -1,0 +1,44 @@
+{
+  "_help": "Question/decision ledger. kind: business_rule|technical|environment. status: OPEN|ANSWERED|NEEDS_FOLLOW_UP|RESOLVED|SUPERSEDED (SUPERSEDED needs superseded_by). Material questions need >= 2 interpretations. Answers are recorded only with `ba.py answer` (answers.jsonl); reference them by id in resolution.answer_refs. resolution.kind: AUTHORIZED_DECISION (needs an AUTHORIZED answer) | VERIFIED_EVIDENCE (claim ids; business rules need an AUTHORITATIVE_REQUIREMENT) | SUPPORTED_INFERENCE (never for material business rules; not for material questions at high/critical risk). Every decision point must be settled in resolution.decision_points. contradictions[].resolution: UNRESOLVED|RESOLVED_BY_AUTHORIZED_DECISION|RESOLVED_BY_EVIDENCE|NOT_A_CONTRADICTION. counterexamples[].handled: UNHANDLED|COVERED_BY_RULE|ADDED_ACCEPTANCE_CRITERION|FOLLOW_UP|NOT_MATERIAL. Set duplicate_of to a RESOLVED question id instead of re-asking a known topic.",
+  "questions": [
+    {
+      "id": "Q-1",
+      "kind": "",
+      "material": null,
+      "topic": "",
+      "uncertainty": "",
+      "question": "",
+      "interpretations": [
+        {"id": "I1", "description": "", "behavior_impact": ""},
+        {"id": "I2", "description": "", "behavior_impact": ""}
+      ],
+      "affected": [],
+      "resolving_evidence": "",
+      "decision_points": [{"id": "DP1", "description": ""}],
+      "addresses_claims": [],
+      "status": "OPEN",
+      "duplicate_of": null,
+      "superseded_by": null,
+      "follow_ups": [],
+      "analysis": {
+        "rule": "",
+        "hidden_assumptions": [],
+        "contradictions": [
+          {"id": "X1", "with": "", "description": "", "resolution": "UNRESOLVED", "resolution_ref": ""}
+        ],
+        "counterexamples": [
+          {"id": "CE1", "scenario": "", "handled": "UNHANDLED", "ref": "", "justification": ""}
+        ]
+      },
+      "resolution": {
+        "kind": "",
+        "rule": "",
+        "decision_points": {"DP1": ""},
+        "answer_refs": [],
+        "evidence_refs": [],
+        "supersedes": [],
+        "acceptance_criteria": []
+      }
+    }
+  ]
+}

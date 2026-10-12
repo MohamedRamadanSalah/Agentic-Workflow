@@ -1,0 +1,22 @@
+{
+  "_help": "Reviewer output, ingested with `ba.py review-record reviews/<reviewer>.json`. reviewer: business-logic|regression|test-quality|security|architecture|coderabbit. status: COMPLETED (scope_inspected must list what you actually read) | NOT_APPLICABLE (rationale >= 20 chars). severity: CRITICAL|HIGH|MEDIUM|LOW|INFORMATIONAL (impact x likelihood, not preference). All finding text fields are required; line is an integer or null. Remove the placeholder finding if you have none - an empty findings list is valid.",
+  "reviewer": "",
+  "status": "",
+  "rationale": "",
+  "scope_inspected": [],
+  "findings": [
+    {
+      "severity": "",
+      "category": "",
+      "file": "",
+      "line": null,
+      "summary": "",
+      "behavior": "",
+      "failure_scenario": "",
+      "requirement_violated": "",
+      "evidence": "",
+      "recommendation": "",
+      "confidence_rationale": ""
+    }
+  ]
+}

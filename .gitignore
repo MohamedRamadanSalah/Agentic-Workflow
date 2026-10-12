@@ -1,0 +1,10 @@
+# bug-assurance local evidence (may contain captured user messages)
+.bug-assurance/runs/
+.bug-assurance/inbox.jsonl
+.bug-assurance/active-run
+.bug-assurance/config.proposed.json
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/

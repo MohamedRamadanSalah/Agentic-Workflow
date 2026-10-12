@@ -1,0 +1,49 @@
+{
+  "_help": "Bug Understanding Model (written by ba-bug-investigator). claims[].classification: VERIFIED_OBSERVATION|AUTHORITATIVE_REQUIREMENT|REPOSITORY_EVIDENCE|CORROBORATED_INFERENCE|UNVERIFIED_ASSUMPTION|CONTRADICTION|UNKNOWN. AUTHORITATIVE_REQUIREMENT claims need source_path + verbatim quote (checked against the file) or answer_ref (an AUTHORIZED answer id). hypotheses[].status: CANDIDATE|SUPPORTED|CONFIRMED|REFUTED; evidence kinds reproduction|test|trace|log|debugger|experiment count as direct evidence; refs under evidence/ must exist in the run dir. root_cause.status: CONFIRMED|PROBABLE|UNCONFIRMED (the latter two need diagnostic_limitation).",
+  "symptom": "",
+  "expected_behavior": "",
+  "actual_behavior": "",
+  "preconditions": [],
+  "actors": [],
+  "business_rules": [],
+  "initial_state": "",
+  "trigger": "",
+  "expected_transition": "",
+  "actual_transition": "",
+  "side_effects": [],
+  "failure_recovery": "",
+  "behavior_model": {
+    "preconditions": "",
+    "action": "",
+    "expected_state_transition": "",
+    "expected_side_effects": ""
+  },
+  "claims": [
+    {
+      "id": "C-1",
+      "classification": "",
+      "material": null,
+      "statement": "",
+      "source": "",
+      "source_path": "",
+      "quote": "",
+      "answer_ref": "",
+      "evidence": []
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H-1",
+      "status": "",
+      "statement": "",
+      "supporting": [{"kind": "", "ref": "", "note": ""}],
+      "contradicting": [],
+      "alternatives": [],
+      "distinguishing_test": "",
+      "remaining_uncertainty": ""
+    }
+  ],
+  "root_cause": {"status": "", "hypothesis": "", "diagnostic_limitation": ""},
+  "missing_information": [],
+  "implementation_changing_decisions": []
+}
