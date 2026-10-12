@@ -4,7 +4,7 @@
 The risks are listed under *Pending* and *Limitations* below.
 
 Date: 2026-10-13 · Environment: Windows 10, Claude Code 2.1.296, Python 3.13.2, Git Bash.
-Nothing has been committed, pushed or published.
+Published with the user's approval to https://github.com/MohamedRamadanSalah/Agentic-Workflow.
 
 ## Verified results (commands actually run)
 
@@ -14,7 +14,8 @@ Nothing has been committed, pushed or published.
 | `ba.py doctor` | ok, no problems or warnings |
 | `ba.py validate-workflows` | exit 0, no problems or warnings |
 | `ba.py verify --standalone` | 4/4 PASS (system-tests, fixture-tests, compile, validate-workflows) |
-| `ba.py github-status` | file created YES · syntax YES · executed UNKNOWN · reported UNKNOWN · required UNKNOWN · enforcement NO (no remote) |
+| GitHub Actions run 38318943070 on `5903d82` (push to `main`) | **success**: `self-test` 168 passed, 1 skipped (Windows-only drive-letter test); `assurance-checks` 3/3 PASS, no required failures; `workflow-lint` success |
+| `ba.py github-status` (remote `MohamedRamadanSalah/Agentic-Workflow`) | file created YES · syntax YES · executed YES · reported YES · **required NO** · enforcement NO |
 | Live PreToolUse hook in this session | Edit to `examples/fixture-app/src/orders/cancellation.py` during run `BA-20261012-222556-b97b` (INTAKE) was **denied** by the hook |
 | Live UserPromptSubmit hook | fired on real session turns, writing records to `.bug-assurance/inbox.jsonl` (this exposed bug 1 below) |
 | Hook command lines run exactly as configured (`bash -c`, `CLAUDE_PROJECT_DIR`) | ask on `git commit` / `gh pr create`; deny on `rm -rf .bug-assurance`; silent otherwise |
@@ -58,13 +59,14 @@ shows every check status · R an unconfirmed root cause is reported honestly.
 
 ## Pending (needs external action or your decision)
 
-- **GitHub:** no remote exists, so the workflow has never run on GitHub. Required checks are not configured and
-  enforcement has not been observed. Steps are in `docs/CI-AND-REQUIRED-CHECKS.md`.
+- **GitHub:** pushed to https://github.com/MohamedRamadanSalah/Agentic-Workflow (public), and CI ran green.
+  Still pending: no branch protection or ruleset makes `self-test`, `assurance-checks` and `workflow-lint` required,
+  and enforcement has not been observed (it needs a deliberately failing PR). Steps are in `docs/CI-AND-REQUIRED-CHECKS.md`.
 - **CodeRabbit:** the config file is present and schema-checked. The GitHub App is not installed and no
   reviews have been observed (`docs/CODERABBIT.md`).
 - **Manual end-to-end run:** a real `/bug-assurance` session on BUG-101 with a human answering the questions
   has **not** been executed. The procedure is in `docs/ACCEPTANCE-TESTS.md`.
-- **Commit:** all files are untracked; nothing is committed without your approval.
+- **Commit:** the initial commit `5903d82` was pushed with your approval, authored by the GitHub noreply identity.
 
 ## Limitations (by design or by environment)
 
